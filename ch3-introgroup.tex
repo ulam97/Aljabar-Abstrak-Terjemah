@@ -1,0 +1,208 @@
+%ch3-introgroup.tex
+
+\chapter{Pengenalan Grup}
+
+Sekarang kita mulai belajar aljabar abstrak yang sesungguhnya! Sebuah grup adalah struktur aljabar yang paling sederhana; kita ambil sembarang himpunan, berikan sebuah operasi padanya, ditambah dengan empat aturan dasar, dan melihat apa yang dapat kita deduksi darinya. Meskipun sederhana, ada tak-berhingga banyaknya kemungkinan. Grup muncul di mana saja, dan bukan hanya dalam matematika. Misalnya, sulit untuk memahami fisika dan kimia tanpa pemahaman teori grup. 
+
+Dalam bab ini, kita akan mendefinisikan apa itu sebuah grup, dan memberikan beberapa contoh kasus. Lalu kita juga akan membuktikan beberapa sifat-sifat dasar dari grup dan subgrup.
+
+\section{Contoh Penting}
+
+Pada bagian berikutnya, kita akan memberikan definisi dari sebuah grup. Untuk sementara, kita akan melihat terlebih dahulu contoh yang memotivasinya.
+
+Misalkan $A$ adalah himpunan $\{1, 2, 3\}$. Kita ingin membahas seluruh permutasi dari $A$; yaitu, seluruh cara mengurutkan bilangan $1, 2,$ dan $3$. Misalnya, kita memiliki sebuah permutasi $\sigma$, dimana $\sigma(1) = 2, \sigma(2) = 1,$ dan $\sigma(3) = 3$. Dapat kita lihat dengan mudah bahwa terdapat 6 macam permutasi, karena ada 3 pilihan untuk $\sigma(1)$, lalu 2 pilihan sisanya untuk $\sigma(2)$, setelah dua pilihan tersebut diambil, $\sigma(3)$ sudah ditentukan nilainya.
+
+Sedikit tambahan notasi akan membantu. Misalkan kita tuliskan sebuah permutasi $\sigma$ dengan menuliskan dua baris. Unsur-unsur dari $A$ ada di baris pertama, lalu bilangan hasil permutasi dari masing-masing unsur dituliskan di baris berikutnya; yaitu, kita tuliskan 
+\[ \sigma = \begin{pmatrix}
+1 & 2 & 3 \\
+a & b & c
+\end{pmatrix}
+\]
+untuk permutasi $\sigma(1) = 1, \sigma(2) = b,$ dan $\sigma(3) = 3$. Sehingga permutasi yang sebelumnya kita sebut dapat dituliskan sebagai
+\[\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 1 & 3
+\end{pmatrix}.
+\]
+Daftar lengkap dari seluruh permutasinya adalah
+\[\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 2 & 3
+\end{pmatrix},
+\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 2
+\end{pmatrix},
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 1 & 3
+\end{pmatrix},
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 3 & 1
+\end{pmatrix},
+\begin{pmatrix}
+1 & 2 & 3 \\
+3 & 1 & 2
+\end{pmatrix}, \text{ dan }
+\begin{pmatrix}
+1 & 2 & 3 \\
+3 & 2 & 1
+\end{pmatrix}.
+\]
+
+Sekarang kita diskusikan komposisi dari dua permutasi. Misalnya, jika 
+\[ \sigma = \begin{pmatrix}
+1 & 2 & 3 \\
+2 & 1 & 3
+\end{pmatrix} \text{ dan }
+\tau = \begin{pmatrix}
+1 & 2 & 3 \\
+3 & 1 & 2
+\end{pmatrix},
+\]
+maka bisa kita lihat jelas bahwa $(\sigma \circ \tau)(1) = \sigma(\tau(1)) = \sigma(3), (\sigma \circ \tau)(2) = \sigma(\tau(2)) = \sigma(1) = 2$ dan $(\sigma \circ \tau)(3) = \sigma(\tau(3)) = \sigma(2) = 1$. Jadi,
+\[\sigma \circ \tau = \begin{pmatrix}
+1 & 2 & 3 \\
+3 & 2 & 1
+\end{pmatrix}.
+\]
+(Perlu diperhatikan kalau kita menerapkan permutasi $\tau$ terlebih dahulu, lalu $\sigma$.)
+
+Kita bisa meninjau lebih jauh sifat-sifat permutasi terhadap operasi komposisi. Saat meninjaunya, kita lalu bandingkan dengan sifat-sifat $\ZZ$ atau $\ZZ_n$, di bawah operasi penjumlahan, dimana kita sudah terbiasa dengannya.
+
+Pertama, kita memiliki \defword{ketertutupan}{closure}. Yaitu, jika kita pilih dua permutasi atas $A$ lalu komposisikan keduanya, kita akan mendapatkan permutasi lain dari $A$. Malahan, kita sudah membuktikannya pada Dalil \ref{thm1.2}, yang menyatakan bahwa komposisi dari dua fungsi bijektif adalah juga bijektif.
+
+Lalu \textbf{asosiativitas}; yaitu untuk sembarang permutasi $\rho, \sigma,$ dan $\tau$, kita dapatkan $\rho \circ (\sigma \circ \tau) = (\rho \circ \sigma) \circ \tau$. Kita juga sudah menemukan sebelumnya; berdasarkan Dalil \ref{thm1.2}, komposisi dari fungsi selalu asosiatif.
+
+Kita juga memiliki permutasi \textbf{identitas}. Jika $\sigma$ adalah sembarang permutasi dari $A$, maka
+\[ \sigma \circ \begin{pmatrix}
+1 & 2 & 3 \\
+1 & 2 & 3
+\end{pmatrix} = \begin{pmatrix}
+1 & 2 & 3 \\
+1 & 2 & 3
+\end{pmatrix} \circ \sigma = \sigma.
+\]
+
+Akhirnya, terdapat pula \textbf{invers}; yaitu, untuk setiap permutasi $\sigma$, terdapat permutasi lain $\tau$ sedemikian sehingga
+\[ \sigma \circ \tau = \tau \circ \sigma = \begin{pmatrix}
+1 & 2 & 3 \\
+1 & 2 & 3
+\end{pmatrix},
+\]
+permutasi identitas. Invers di sini cukup mudah untuk dihitung secara langsung; misalnya,
+\[\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 3 & 1
+\end{pmatrix} \circ \begin{pmatrix}
+1 & 2 & 3 \\
+3 & 1 & 2
+\end{pmatrix} = \begin{pmatrix}
+1 & 2 & 3 \\
+3 & 1 & 2
+\end{pmatrix} \circ \begin{pmatrix}
+1 & 2 & 3 \\
+2 & 3 & 1
+\end{pmatrix} = \begin{pmatrix}
+1 & 2 & 3 \\
+1 & 2 & 3
+\end{pmatrix}.
+\]
+Dan keberadaan invers dijamin oleh Dalil \ref{thm1.3}.
+
+Berdasarkan diskusi kita pada bagian \ref{sec2.4} dan \ref{sec2.5}, bisa dilihat bahwa sifat-sifat tersebut juga dimiliki oleh $\ZZ$ dan $\ZZ_n$ di bawah penjumlahan. Tetapi, perlu dicatat bahwa operasi penjumlahan adalah \textbf{komutatif}. Tidak dengan kasus ini! Misalnya, 
+\[ \begin{pmatrix}
+1 & 2 & 3 \\
+2 & 3 & 1
+\end{pmatrix} \circ \begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 2
+\end{pmatrix} = \begin{pmatrix}
+1 & 2 & 3 \\
+2 & 1 & 3
+\end{pmatrix},
+\]
+sedangkan
+\[\begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 2
+\end{pmatrix} \circ \begin{pmatrix}
+1 & 2 & 3 \\
+2 & 3 & 1
+\end{pmatrix} = \begin{pmatrix}
+1 & 2 & 3 \\
+3 & 2 & 1
+\end{pmatrix}.
+\]
+Sehingga, secara umum, $\sigma \circ \tau \neq \tau \circ \sigma$.
+
+Permutasi-permutasi tersebut di bawah operasi komposisi memberikan contoh sebuah grup, seperti yang akan segera kita bahas. Tentu saja, tidak ada hal yang khusus tentang himpunan $A = \{1, 2, 3 \}$. Dan memang, mudah saja kita gunakan himpunan $\{1, 2, 3, ..., n \}$, untuk sembarang bilangan bulat positif $n$. Himpunan seluruh permutasi dari himpunan tersebut, di bawah operasi komposisi, disebut juga sebagai \textbf{grup simetrik} pada $n$ huruf, dan dituliskan $S_n$.
+
+
+\textbf{Latihan}
+
+\begin{exc}
+Pada $S_4$, misalkan $\sigma = \begin{pmatrix} 
+1 & 2 & 3 & 4 \\
+3 & 1 & 4 & 2
+\end{pmatrix}$ dan $\tau =  \begin{pmatrix} 
+1 & 2 & 3 & 4 \\
+3 & 4 & 1 & 2
+\end{pmatrix}$. Hitunglah nilai-nilai berikut.
+  \begin{enumerate}
+  	\item $\sigma \tau$
+  	\item $\tau \sigma$
+  	\item invers dari $\sigma$
+  \end{enumerate}
+\end{exc}
+
+\begin{exc}
+Pada $S_5$, misalkan $\sigma = \begin{pmatrix} 
+1 & 2 & 3 & 4 & 5 \\
+5 & 3 & 2 & 1 & 4
+\end{pmatrix}$ dan $\tau =  \begin{pmatrix} 
+1 & 2 & 3 & 4 & 5\\
+2 & 4 & 1 & 3 & 5
+\end{pmatrix}$. Hitunglah nilai-nilai berikut.
+  \begin{enumerate}
+  	\item $\sigma \tau \sigma$
+  	\item $\sigma \sigma \tau$
+  	\item invers dari $\sigma$
+  \end{enumerate}
+\end{exc}
+
+\begin{exc}
+  Berapa banyak permutasi pada $S_n$? Pada $S_5$, berapa banyak permutasi yang memiliki nilai $\alpha(2) = 2$?
+\end{exc}
+
+\begin{exc}
+  Misalkan $H$ adalah himpunan dari seluruh permutasi $\alpha \in S_5$ dimana $\alpha(2) = 2$. Sifat-sifat manakah dari yang kita diskusikan sebelumnya (ketertutupan, asosiativitas, identitas, invers) yang dimiliki oleh $H$ di bawah komposisi fungsi?
+\end{exc}
+
+\begin{exc}
+  Tinjau himpunan seluruh fungsi dari $\{ 1, 2, 3, 4, 5 \}$ ke $\{ 1, 2, 3, 4, 5 \}$. Sifat-sifat (ketertutupan, asosiativitas, identitas, invers) apa sajakah yang dimiliki oleh himpunan fungsi tersebut di bawah komposisi?
+\end{exc}
+
+\begin{exc}
+  Misalkan $G$ adalah himpunan dari seluruh permutasi pada $\NN$. Sifat-sifat apasajakah (ketertutupan, asosiativitas, identitas, invers) yang dimiliki oleh $G$ di bawah komposisi fungsi?
+\end{exc}
+
+
+\section{Grup}
+
+Sekarang kita mulai dengan definisi umum dari sebuah grup.
+
+\begin{defn}
+  Sebuah \textbf{grup} adalah sebuah himpunan $G$, bersama dengan operasi biner, yang memenuhi syarat-syarat berikut:
+  \begin{enumerate}
+  	\item $a * b \in G$ untuk setiap $a, b \in G$ (ketertutupan);
+  	\item $(a * b) *c = a * (b * c)$ untuk setiap $a, b, c \in G$ (asosiativitas);
+  	\item terdapat sebuah $e \in G$ sedemikian sehingga $a * e = e * a = a$ untuk setiap $a \in G$ (keberadaan unsur identitas); serta
+  	\item untuk setiap $a \in G$, terdapat sebuah $b \in G$ sedemikian sehingga $a * b = b * a = e$ (keberadaan unsur invers).
+  \end{enumerate}
+\end{defn}
+
+Kita sebut $G$ sebagai sebuah grup \textbf{di bawah} $*$.
+
+Unsur $e$ disebut sebagai \textbf{identitas} dari grup. Jika $a \in G$, dan $a * b = b * a = e$, maka $b$ disebut sebagai \textbf{invers} dari $a$, dan kita tuliskan sebagai $b = a^{-1}$.

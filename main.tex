@@ -1,0 +1,73 @@
+\documentclass{amsbook}
+\usepackage[margin=2.5cm,paper=b5paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ulem}
+
+\usepackage[indonesian]{babel}
+\usepackage{noindentafter}
+\usepackage{hyperref}
+
+\newtheoremstyle{exercise}
+  {\topsep}   % ABOVESPACE
+  {\topsep}   % BELOWSPACE
+  {}  % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definisi}[chapter]
+
+\theoremstyle{remark}
+\newtheorem{exmp}{Contoh}[chapter]
+
+\theoremstyle{plain}
+\newtheorem{thm}{Dalil}[chapter]
+
+\theoremstyle{exercise}
+\newtheorem{exc}{}[chapter]
+
+\include{shortcutsymbol}
+
+\title{Aljabar Abstrak: Kuliah Pengantar}
+\author{Gregory T. Lee}
+\author{Alih bahasa oleh Ulul Amri}
+\author{Sumber Asli:}
+\author{\href{https://doi.org/10.1007/978-3-319-77649-1}{Abstract Algebra: An Introductory Course}}
+\date{November 2021}
+
+\begin{document}
+
+\maketitle
+
+
+\part{Pengantar}
+\include{ch1-relfun}
+\include{ch2-int-mod}
+
+\part{Grup}
+\include{ch3-introgroup}
+\include{ch4-factgrp}
+\include{ch5-dirprod-fingrp}
+\include{ch6-sym-alt-grp}
+\include{ch7-sylow}
+
+\part{Gelanggang}
+\include{ch8-introring}
+\include{ch9-idfacthom}
+\include{ch10-domains}
+
+\part{Lapangan dan Polinomial}
+\include{ch11-irrpoly}
+\include{ch12-vspc-fext}
+
+\part{Aplikasi}
+\include{ch13-pubkey}
+\include{ch14-sted-comp}
+
+
+\end{document}

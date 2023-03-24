@@ -1,0 +1,531 @@
+\chapter{Fungsi dan Hubungan}
+
+Kita mulai dengan memperkenalkan notasi dan terminologi dasar. Kemudian kita bahas hubungan, terutama hubungan kesetaraan, yang akan kita temukan beberapa kali sepanjang buku. Pada bagian terakhir, kita akan membahas berbagai macam fungsi.
+
+
+\section{Himpunan dan Operasi pada Himpunan}
+
+Sebuah \textbf{himpunan} adalah sebuah koleksi obyek-obyek. Kita akan melihat berbagai macam himpunan dalam buku ini. Mungkin yang paling umum adalah himpunan bilangan. Misalnya, kita memiliki himpunan \textbf{bilangan cacah (\textit{natural numbers})}
+\[ \mathbb{N} = \{1,2,3, ...\},\]
+himpunan \textbf{bilangan bulat (\textit{integers})}
+\[ \mathbb{Z} = \{..., -2, -1, 0, 1, 2, ...\}, \]
+dan himpunan \textbf{bilangan rasional}
+\[  \mathbb{Q} = \{ \frac{a}{b} : a,b \in \mathbb{Z}, b \neq 0 \}. \]
+Kita juga menuliskan $\mathbb{R}$ untuk himpunan \textbf{bilangan riil} dan $\mathbb{C}$ untuk himpunan \textbf{bilangan kompleks}.
+
+Tetapi himpunan tidak harus melulu berupa bilangan. Kita bisa definisikan himpunan yang terdiri dari huruf alfabet, himpunan polinomial dengan koefisien bilangan genap, maupun himpunan seluruh garis pada bidang kartesius dengan kemiringan $m$ positif.
+
+Obyek-obyek dalam sebuah himpunan kita sebut sebagai \textbf{unsur (\textit{elements})} himpunan. Kita menuliskan $a \in S$ untuk "$a$ adalah unsur dari himpunan $S$". Jadi $-3 \in \mathbb{Z}$ tetapi $-3 \notin \mathbb{N}$.
+
+Jika $S$ dan $T$ adalah himpunan, maka kita sebut $S$ adalah \textbf{subhimpunan} dari $T$, dan menuliskannya $S \subseteq T$, jika untuk setiap unsur dari $S$ maka ia juga unsur dari $T$. Tentunya, $S \subseteq S$. Kita sebut $S$ adalah subhimpunan \textbf{wajar (\textit{proper})} dari $T$, dan menuliskannya $S \subsetneq T$, jika $S\subseteq T$ tetapi $S \neq T$. Sehingga, adalah benar bahwa $\mathbb{N} \subseteq \mathbb{Z}$, tapi kita bisa lebih tepat lagi dengan menuliskannya $\mathbb{N} \subsetneq \mathbb{Z}$.
+
+Untuk dua himpunan $S$ dan $T$, \textbf{perpotongan (\textit{intersection})} dari keduanya, $S \cap T$, adalah himpunan dari unsur-unsur yang berada di $S$ dan $T$ secara bersamaan. 
+
+\begin{exmp}
+\label{exmp1.1}
+Misalkan $S = \{1, 2, 3, 4, 5\}$ dan $T = \{2, 4, 6, 8, 10\}$. Maka $S \cap T = \{2, 4\}$.
+\end{exmp}
+
+Kita dapat memperluas gagasan ini menjadi perpotongan sembarang jumlah himpunan. Jika $I$ adalah himpunan tak-kosong dan, untuk setiap $i \in I$, kita memiliki sebuah himpunan $T_i$, maka kita menuliskan $\bigcap_{i\in I} T_i$ untuk himpunan yang setiap unsur-unsurnya berada di semua $T_i$ sekaligus.
+
+\begin{exmp}
+\label{exmp1.2}
+Untuk setiap $q \in \mathbb{Q}$, misalkan $T_q = \{r \in \mathbb{R} : r < 2^q \}$. Maka $\bigcap_{q\in \mathbb{Q}} T_q = \{r \in \mathbb{R} : r \leq 0\}$.
+\end{exmp}
+
+Untuk sembarang himpunan $S$ dan $T$, \textbf{gabungan (\textit{union})} dari keduanya, $S \cup T$, adalah himpunan yang unsur-unsurnya berada di $S$ atau $T$ (atau keduanya).
+
+\begin{exmp}
+Menggunakan $S$ dan $T$ yang sama seperti pada Contoh \ref{exmp1.1}, kita memiliki \[ S \cup T = \{1, 2, 3, 4, 5, 6, 8, 10\}. \]
+\end{exmp}
+
+Lebih jauh lagi, jika $I$ adalah sebuah himpunan tak-kosong dan terdapat $T_i$ untuk setiap $i \in I$, kita menuliskan $\bigcap_{i \in I} T_i$ untuk gabungan seluruh himpunan $T_i$, yaitu himpunan yang unsur-unsurnya adalah unsur minimal dari salah satu $T_i$.
+
+\begin{exmp}
+Jika kita menggunakan himpunan $T_q$ yang sama seperti pada Contoh \ref{exmp1.2}, kita mendapatkan $\bigcap_{q \in Q} T_q = \mathbb{R}$.
+\end{exmp}
+
+Lalu, kita definisikan untuk dua himpunan $S$ dan $T$, \textbf{selisih himpunan (\textit{set difference})} atau \textbf{komplemen relatif (\textit{relative complement})} yaitu himpunan $S \setminus T \{a \in S : a \notin T\}$.
+
+\begin{exmp}
+Sekali lagi menggunakan $S$ dan $T$ seperti pada Contoh \ref{exmp1.1}, kita mendapatkan $S \setminus T = \{1, 3, 5\}$.
+\end{exmp}
+
+Kita akan membutuhkan satu definisi lagi. Konstruksi berikutnya diberi nama mengikuti Rene Descartes.
+
+\begin{defn}
+Misal $S$ dan $T$ adalah sembarang himpunan. Maka \textbf{produk Kartesius (\textit{Cartesian product})} $S \times T$ adalah himpunan dari pasangan tersusun (\textit{ordered pairs}) berbentuk $(s, t)$, dengan $s \in S$ dan $T \in T$. 
+\end{defn}
+
+\begin{exmp}
+Misalkan $S = \{1, 2, 3\}$ dan $T = \{2, 3\}$. Maka
+\[S \times T = \{ (1, 2), (1, 3), (2, 2), (2, 3), (3, 2), (3, 3) \}.\]
+\end{exmp}
+
+Terdapat pula produk Kartesius untuk berhingga banyaknya himpunan. Untuk himpunan-himpunan $T_1, T_2, ..., T_n$, kita tuliskan $T_1 \times T_2 \times ... \times T_n$ untuk himpunan lipat-$n$ (\textit{$n$-tuple}) tersusun dari $(t_1, t_2, ..., t_n)$, dengan $t_i \in T_i$ untuk setiap $i$.
+
+\begin{exmp}
+Misalkan $T_1 = \{1, 2\}$, $T_2 = \{a,b\}$, dan $T_3 = \{2,3\}$. Maka $T_1 \times T_2 \times T_3$ adalah himpunan
+\[ \{ (1, a, 2), (1, a, 3), (1, b, 3), (2, a, 2), (2, a, 3), (2, b, 2), (2, b, 3) \}. \]
+\end{exmp}
+\hfill \break
+
+
+\textbf{Latihan}
+
+\begin{exc}
+Misalkan $S = \{1, 2, 3\}$ dan $T = \{3, 4\}$. Carilah $S \cap T$, $S \cup T$, $S \setminus T$, $T \setminus S$, dan $S \times T$.
+\end{exc}
+
+\begin{exc}
+Misalkan $R = \{a, b, c\}$, $S = \{a, c, d\}$, dan $T = \{c, e, f\}$. Carilah $R \cap S$, $R \cap (S \setminus T)$, $S \cup T$, $S \cap (R \cup T)$, dan $R \times S$.
+\end{exc}
+
+\begin{exc}
+Misalkan $R, S,$ dan $T$ adalah himpunan dimana $R \subseteq S$. Tunjukkan bahwa $R \cup T \subseteq S \cup T$.
+\end{exc}
+
+\begin{exc}
+Misalkan $S = \{1, 2, ..., n\}$, untuk sembarang bilangan bulat positif $n$. Tunjukkan bahwa $S$ memiliki sejumlah $2^n$ banyaknya subhimpunan.
+\end{exc}
+
+\begin{exc}
+Misalkan $R, S$, dan T adalah sembarang himpunan. Tunjukkan bahwa $R \cup (S \cap T) = ( R \cup S) \cap (R \cup T)$.
+\end{exc}
+
+\begin{exc}
+Untuk setiap bilangan bulat positif $n$, misalkan $T_n = \{\frac{a}{b} : a \in \mathbb{Z}\}$.
+\begin{enumerate}
+    \item Seperti apakah $\bigcup_{n=1}^\infty T_n$?
+    \item Seperti apakah $\bigcap_{n=1}^\infty T_n$?
+\end{enumerate}
+\end{exc}
+
+
+\section{Hubungan}
+
+Kita akan menggunakan konsep hubungan (terutama, hubungan kesetaraan dan fungsi yang akan kita kenalkan pada dua bagian berikutnya) cukup sering dalam buku ini.
+
+\begin{defn}
+Misalkan $S$ dan $T$ adalah himpunan. Maka sebuah \textbf{hubungan (\textit{relation})} dari $S$ ke $T$ adalah sebuah subhimpunan $\rho$ dari $S \times T$. Jika $s \in S$ dan $t \in T$, maka kita tuliskan $s\rho t$ jika $(s, t) \in \rho$; selain itu, kita tuliskan $s \xout{\rho} t$. Lebih jauh, sebuah \textbf{hubungan} pada $S$ adalah sebuah hubungan dari $S$ ke $S$. 
+\end{defn}
+
+\begin{exmp}
+Misalkan $S = \{1, 2, 3\}$ dan $T = \{1, 2, 3, 4\}$. Definisikan sebuah hubungan $\rho$ dari $S$ ke $T$ sebagai $s \rho t$ jika dan hanya jika $s t^2 \leq 4$. Maka $\rho = \{(1,1), (1,2), (2,1), (3,1)\}$. Khususnya, $3 \rho 1$ tetapi $1 \xout{\rho} 3$.
+\end{exmp}
+
+Kita akan berfokus pada hubungan pada sebuah himpunan. Mari kita tinjau beberapa sifat yang dimiliki oleh beberapa hubungan.
+
+\begin{defn}
+Misalkan $\rho$ adalah sebuah hubungan pada $S$. Maka kita sebut $\rho$ sebagai \textbf{refleksif} jika $a \rho a$ untuk setiap $a \in S$.
+\end{defn}
+
+\begin{exmp}
+Pada $\mathbb{Z}$, hubungan $\leq$ adalah refleksif, tetapi $<$ tidak. Dan memang, $a \leq a$ untuk setiap bilangan cacah $a$, tapi $1$ tidak kurang dari $1$.
+\end{exmp}
+
+\begin{defn}
+Sebuah hubungan $\rho$ pada sebuah himpunan $S$ kita sebut \textbf{simetrik} jika $a \rho b$ berarti $b \rho a$.
+\end{defn}
+
+\begin{exmp}
+\label{exmp1.10}
+Pada $\mathbb{Z}$, $\leq$ dan $<$ tidak simetrik, karena $1 <2$ tetapi $2$ tidak kurang dari 1 (dan begitu pula untuk $\leq$). Definisikan $\rho$ sebagai $a\rho b$ jika dan hanya jika $|a - b| \leq 10$. Maka $\rho$ adalah simetrik. Dan benar, jika $a\rho b$, maka $|a - b| \leq 10$, begitu juga dengan $|b-a| \leq 10$; sehingga, $b \rho a$ juga.
+\end{exmp}
+
+\begin{defn}
+Misalkan $\rho$ adalah hubungan pada sebuah himpunan $S$. Maka kita sebut $\rho$ sebagai \textbf{transitif} jika, setiap kali $a \rho b$ dan $b \rho c$, maka $a \rho c$.
+\end{defn}
+
+\begin{exmp}
+Pada $\mathbb{Z}$, hubungan $\leq$ dan $\le$ adalah transitif. (Jika $a \leq b$ dan $b \leq c$ maka adalah benar bahwa $a \leq c$.) Tetapi, hubungan $\rho$ dari Contoh \ref{exmp1.10} tidak transitif, karena $1 \rho 8$ dan $8 \rho 13$, tetapi $1 \xout{\rho} 13$.
+\end{exmp}
+
+Tiga sifat-sifat ini membawa kita kepada bagian berikutnya.
+\hfill \break
+
+
+\textbf{Latihan}
+
+\begin{exc}
+Misalkan $S = \{1, 2, 3\}$ dan $T = \{3, 4, 5, 6, 7, 8\}$. Definisikan sebuah hubungan $\rho$ dari $S$ ke $T$ sebagai $a \rho b$ jika dan hanya jika $|a^2 - b| \leq 1$. Temukan seluruh pasangan $(a, b) \in S\times T$ sedemikian sehingga $a \rho b$.
+\end{exc}
+
+\begin{exc}
+Definisikan sebuah hubungan $\rho$ pada $\mathbb{Z}$ sebagai $a \rho b$ jika dan hanya jika $ab$ adalah genap. Apakah $\rho$ refleksif? Simetrik? Transitif?
+\end{exc}
+
+\begin{exc}
+Definisikan sebuah hubungan $\rho$ pada $\mathbb{Z}$ sebagai $a \rho b$ jika dan hanya jika $a-b \in \mathbb{Q}$. Apakah $\rho$ refleksif? Simetrik? Transitif?
+\end{exc}
+
+\begin{exc}
+Definisikan sebuah hubungan $\rho$ pada $\mathbb{Z}$ sebagai $a \rho b$ jika dan hanya jika $a-b \in \mathbb{Z}$. Apakah $\rho$ refleksif? Simetrik? Transitif?
+\end{exc}
+
+\begin{exc}Pertanyaan:
+\begin{enumerate}
+    \item Berapa banyak hubungan pada $\{1, 2, 3\}$?
+    \item Berapa banyak hubungan tersebut yang simetrik?
+\end{enumerate}
+\end{exc}
+
+\begin{exc}
+Untuk masing-masing dari 8 subhimpunan dari \{refleksif, simetrik, transitif\}, carilah sebuah hubungan pada $\{1,2,3\}$ yang memiliki sifat-sifat pada subhimpunan tersebut, tetapi yang tidak memiliki sifat-sifat yang tidak berada pada subhimpunan tersebut.
+\end{exc}
+
+
+\section{Hubungan Kesetaraan}
+
+\begin{defn}
+Sebuah \textbf{hubungan kesetaraan (\textit{equivalence relation})} pada sebuah himpunan $S$ adalah sebuah hubungan yang refleksif, simetrik, dan transitif.
+\end{defn}
+
+Kita menggunakan simbol $\sim$ untuk menandakan sebuah hubungan kesetaraan.
+
+\begin{exmp}
+\label{exmp1.12}
+Pada $\mathbb{Z}$, misalkan kita definisikan $a \sim b$ jika dan hanya jika $a+b$ adalah genap. Kita klaim bahwa $\sim$ adalah sebuah hubungan kesetaraan. Jika $a \in \mathbb{Z}$, maka $a+a$ jelas genap, sehingga $a \sim a$, sehingga $\sim$ adalah refleksif. Jika $a \sim b$, maka $a + b$ adalah genap. Tapi ini berarti $b + a$ adalah genap, sehingga $b \sim a$. Jadi, $\sim$ adalah simetrik. Akhirnya, misalkan $a \sim b$ dan $b\sim c$. Maka $a + b$ dan $b+c$ adalah genap. Ini berarti jumlahnya, $a + 2b + c$, adalah genap. Karena $2b$ genap, maka $a + c$ adalah genap, sehingga $a \sim c$. Sehingga, $\sim$ adalah transitif.
+\end{exmp}
+
+\begin{exmp}
+\label{exmp1.13}
+Pada himpunan $S = \{a \in \mathbb{Z} : 1 \leq a \leq 20\}$, nyatakan $a \sim b$ jika dan hanya jika $a = 2^m b$ untuk suatu $m \in \mathbb{Z}$. Mari kita periksa kalau ini adalah sebuah hubungan kesetaraan. Refleksif: Perhatikan bahwa $a = 2^0 a$, sehingga $a \sim a$. Simetri: Jika $a \sim b$, katakanlah $a = 2^m b$, maka $b = 2^{-m}a$, dan berarti $b \sim a$. Transitif: Jika $a \sim b$ dan $b \sim c$, katakanlah $a = 2^m b$ dan $ b = 2^n c$, maka $a = 2^{m+n} c$, sehingga $a \sim c$.
+\end{exmp}
+
+\begin{exmp}
+\label{exmp1.14}
+Pada $\mathbb{R}$, katakanlah $a \sim b$ jika dan hanya jika $a -b \in \mathbb{Z}$. Cobalah kita tinjau apakah ini merupakan hubungan kesetaraan. Refleksif:  Jika $a \in \mathbb{R}$, maka $a - a = 0 \in \mathbb{Z}$, sehingga $a \sim a$. Simetri: Misalkan $a \sim b$. Maka $ a - b \in \mathbb{Z}$, dan $b-a = -(a-b) \in \mathbb{Z}$. Jadi, $b \sim a$. Transitif: Misalkan $a \sim b$ dan $b \sim c$. Maka $a - b, b - c \in \mathbb{Z}$, sehingga $a - c = (a-b) + (b-c) \in \mathbb{Z}$. Yaitu, $a \sim c$.
+\end{exmp}
+
+Mari kita coba contoh yang sedikit lebih rumit.
+
+\begin{exmp}
+\label{exmp1.15}
+Misalkan $S = \ZZ \times (\ZZ \setminus \{0\})$. Definisikan $\sim$ pada $S$ sebagai $(a,b) \sim (c,d)$ jika dan hanya jika $ad = bc$. Kita perlu mengecek apakah $\sim$ sebuah hubungan kesetaraan. Refleksif: Karena $ab = ba$, tentunya $(a,b) \sim (a,b)$ untuk seluruh bilangan bulat $a$ dan bilangan bulat bukan-nol $b$. Simetri: Misalkan $(a,b) \sim (c,d)$. Maka $ad = bc$, dan ini berarti $(c,d) \sim (a,b)$. Transitif: Misalkan $(a,b) \sim (c,d)$ dan $(c,d) \sim (e,f)$. Maka $ad = bc$ dan $cf = de$. Sehingga, $adf = bcf = bde$. Karena kita mengasumsikan $d \neq 0$, ini berarti $af = be$. Sehingga, $(a, b) \sim (e, f)$.
+\end{exmp}
+
+Hubungan kesetaraan adalah hal yang istimewa.
+
+\begin{defn}
+Misalkan $\sim$ adalah sebuah hubungan kesetaraan pada sebuah himpunan $S$. Jika $a \in S$, maka kita sebut \defword{kelas kesetaraan}{equivalence class} dari $a$, dinotasikan dengan $[a]$, sebuah himpunan $\{b \in S: a \sim b\}$.
+\end{defn}
+
+Kenapa kelas kesetaraan menarik untuk dibahas? Kita butuh definisi tambahan.
+
+\begin{defn}
+Misalkan $S$ adalah sebuah himpunan, dan misalkan $T$ adalah sebuah himpunan yang unsurnya subhimpunan-subhimpunan tak-kosong dari $S$. Maka kita sebut $T$ sebagai sebuah \textbf{partisi} dari $S$ jika untuk setiap $a \in S$ dia berada di tepat hanya satu himpunan di $T$.
+\end{defn}
+
+\begin{exmp}
+\label{exmp1.16}
+Misalkan $S = \{1,2,3,4,5,6,7\}$ dan $T = \{ \{1,3,4,6\}, \{2,7\}, \{5\} \}$. Maka $T$ adalah sebuah partisi dari $S$.
+\end{exmp}
+
+Apa hubungan dari konsep-konsep ini?
+
+\begin{thm}
+\label{thm1.1}
+Misalkan $S$ adalah sebuah himpunan, dan $\sim$ adalah hubungan kesetaraan pada $S$. Maka koleksi kelas kesetaraan terhadap $\sim$ membentuk sebuah partisi dari $S$. Lebih detilnya, jika $a \in S$, maka $a \in [a]$ dan, lebih jauhnya, $a \in [b]$ jika dan hanya jika $[a] = [b]$.
+\end{thm}
+
+\begin{proof}
+Karena $\sim$ refleksif, $a \sim a$, sehingga $a \in [a]$ untuk setiap $a \in S$. Lebih tepatnya, kelas-kelas kesetaraan tidaklah kosong, dan setiap unsur dari $S$ berada di paling tidak salah satu darinya. Misalkan $d \in [a] \cap [c]$. Kita perlu menunjukkan bahwa $[a] = [c]$. Jika $e \in [a]$, maka $a \sim e$. Juga, $d\in [a]$ berarti $a \sim d$, sehingga $d \sim a$ karena simetri. Serta, $c \sim d$. Melalui transitivitas, $c \sim a$, lalu $c \sim e$. Kemudian, $e \in [c]$, sehingga $[a] \subseteq [c]$. Melalui argumen yang sama, $[c] \subseteq [a]$, jadi $[a] = [c]$. Sehingga, benar bahwa kelas kesetaraan membentuk sebuah partisi. Untuk membuktikan pernyataan terakhir dari dalil tersebut, perhatikan bahwa jika $a \in [a] \cap [b]$, maka $[a] = [b]$ dan, sebaliknya, jika $[a] = [b]$, maka $a \in [a] = [b]$.
+\end{proof}
+
+Jadi, kelas kesetaraan membagi sebuah himpunan menjadi beberapa subhimpunan yang tidak saling memiliki unsur yang sama. Penting untuk dicatat bahwa, kecuali hanya ada satu unsur dalam sebuah kelas kesetaraan, wakilan yang dipilih dari sebuah kelas tidaklah unik. Yaitu, jika $b \in [a]$, maka kita bisa saja menuliskan $[b]$ ketimbang $[a]$. Karena keduanya adalah kelas yang sama. Hal ini sedikit memperumit permasalahan ketika kita mendefinisikan operasi pada kelas kesetaraan, yang akan kita lakukan sepanjang buku. Kita perlu menjamin operasi yang kita lakukan benar-benar terdefinisi dengan baik; yaitu, operasi-operasi tersebut tidak bergantung pada wakilan khusus yang kita pilih dari kelas yang kita gunakan.
+
+Mari kita bahas kelas-kelas kesetaraan yang ditetapkan oleh hubungan yang telah kita sebutkan dari contoh-contoh sebelumnya. Taktik-nya selalu sama. Kita tahu bahwa setiap unsur himpunan berada pada tepat hanya satu kelas. Maka, kita akan terus mencari unsur-unsur dari himpunan yang belum masuk ke dalam kelas apapun yang telah kita bangun, dan mendapatkan kelas baru darinya.
+
+\begin{exmp}
+Pada Contoh \ref{exmp1.12}, kita mulai dengan $0$. Lalu kita tahu bahwa $a \sim 0$ jika dan hanya jika $a$ adalah genap. Maka,
+\[ [0] = \{..., -6, -4, -2, 0, 2, 4, 6, ...\}.
+\]
+\noindent
+(Catat bahwa kita akan mendapatkan kelas yang sama jika kita memulai, misalnya, dengan $14$. Karena $14 \in [0]$, sehingga kita mendapatkan $[0] = [14]$.) Kita belum mendapatkan $1$, jadi kita perlu catat bahwa $a \sim 1$ jika dan hanya jika $a + 1$ adalah genap; yaitu, jika dan hanya jika $a$ adalah ganjil. Sehingga,
+\[ [1] = \{..., -5, -3, -1, 1, 3, 5, ...\}
+\]
+\noindent
+(Sekali lagi, kita bisa saja menggunakan $[-3]$.) Sekarang kita telah menemukan seluruh unsur himpunan $\ZZ$. Sehingga, hanya ada dua kelas kesetaraan, $[0]$ dan $[1]$.
+\end{exmp}
+
+\begin{exmp}
+Pada Contoh \ref{exmp1.13}, kita bisa mulai dengan $1$. Sehingga kita mendapatkan \[ [1] = \{1, 2, 4, 8, 16\}. \] Karena kita belum menemukan $3$,
+\[ [3] = \{3, 6, 12\}. \]
+Kita masih belum menemukan $5$, maka kita ambil
+\[ [5] = \{ 5, 10, 20\}. \]
+Dengan cara yang sama, kita dapatkan 
+\[ [7] = \{ 7, 14\},~ [9] = \{9, 18\},~ [11] = \{11\},
+\]
+\[ [13] = \{13\},~ [15] = \{15\},~ [17] = \{17\}, \text{ dan } [19] = \{19\}.
+\]
+Sekali lagi, kita bisa saja menggunakan $[8]$ ketimbang $[1]$, misalnya.
+\end{exmp}
+
+Dua contoh berikutnya sedikit lebih rumit, karena terdapat tak-berhingga banyaknya kelas kesetaraan. Tetapi, ketimbang menuliskan kelas-kelas tersebut, kita bisa coba untuk memberikan deskripsi dari suatu kelas kesetaraan.
+
+\begin{exmp}
+Pada Contoh \ref{exmp1.14}, kita bisa melihat bahwa $b \in [a]$ jika dan hanya jika selisih antara $a$ dan $b$ adalah bilangan bulat. Jadi, misalnya,
+\[ [23.86] = \{... -2.14, -1.14, -0.14, 0.86, 1.86, 2.86, ...\}
+\]
+Menuliskan setiap kelas-kelasnya adalah hal yang tidak mungkin dilakukan. Lalu, bagaimana kita mendeskripsikannya? Kita perhatikan untuk setiap bilangan riil $a$, terdapat sebuah bilangan bulat $k$ sedemikian sehingga $0 \leq a - k < 1$. Sedangkan, $a \sim (a - k)$, sehingga untuk setiap unsur dari $\RR$ berada pada sebuah kelas $[b]$, untuk $0 \leq b < 1$. Lebih jauh lagi, jika $0 \leq b,c < 1$, maka $0 \leq |b - c| < 1$ dan $b \neq c$, maka $[b] \neq [c]$. Sehingga kelas-kelas kesetarannya adalah
+\[ \{ [b] : b \in \RR , 0 \leq b < 1\}.
+\]
+\end{exmp}
+
+\begin{exmp}
+Lalu bagaimana dengan Contoh \ref{exmp1.15}? Kita catat bahwa $(c,d) \in [(a,b)]$ jika dan hanya jika $ad = bc$. Satu cara lain untuk mengekspresikannya yaitu $\frac{a}{b} = \frac{c}{d}$. Jadi, $[(a,b)]$ terdiri dari seluruh pasangan $(c,d)$, dengan $c, d \in \ZZ$ dan $d \neq 0$, sedemikian sehingga $\frac{a}{b} = \frac{c}{d}$. Cara ini, sejatinya, memang bagaimana bilangan rasional dibangun. Kita perlu menjamin bahwa $\frac{2}{3}$ dan $\frac{4}{6}$ dianggap sebagai pecahan yang sama, dan kelas kesetaraan ini bagaimana kita melakukannya. Kita mendapatkan satu kelas kesetaraan untuk setiap pecahan $\frac{a}{b}$. Misalnya,
+\[ (2,3) = \{ ..., (-6, -9), (-4, -6), (-2, -3), (2, 3), (4,6), (6, 9), ...\}.
+\]
+\end{exmp}
+\hfill \break
+
+
+\textbf{Latihan}
+
+\begin{exc}
+Definisikan hubungan $\sim$ pada $\NN$ sebagai $a \sim b$ jika dan hanya jika $a - b = 3k$, untuk suatu $k \in \ZZ$. Apakah $\sim$ adalah sebuah hubungan kesetaraan? Jika iya, apa sajakah kelas kesetaraannya?
+\end{exc}
+
+\begin{exc}
+Definisikan sebuah hubungan $\sim$ pada $\{1, 2, 3, 4, 5, 6, 7\}$ sebagai $a \sim b$ jika dan hanya jika $a$ dan $b$ keduanya genap atau keduanya ganjil. Apakah $\sim$ sebuah hubungan kesetaraan? Jika iya, apa sajakah kelas kesetaraannya?
+\end{exc}
+
+\begin{exc}
+Definisikan $\sim$ pada $\ZZ$ sebagai $a \sim b$ jika dan hanya jika $|a| = |b|$. Apakah $\sim$ sebuah hubungan kesetaraan? Jika iya, apa sajakah kelas kesetaraannya?
+\end{exc}
+
+\begin{exc}
+Definisikan $\sim$ pada $\ZZ$ sebagai $a \sim b$ jika dan hanya jika $ab>0$. Apakah $\sim$ sebuah hubungan kesetaraan? Jika iya, apa sajakah kelas kesetaraannya?
+\end{exc}
+
+\begin{exc}
+Misalkan $S$ adalah sebuah himpunan dari seluruh subhimpunan dari $\ZZ$. Definisikan sebuah hubungan kesetaraan $\sim$ pada $S$ sebagai $T \sim U$ jika dan hanya jika $T \subseteq U$. Apakah $\sim$ sebuah hubungan kesetaraan? Jika iya, apa sajakah kelas kesetaraannya?
+\end{exc}
+
+\begin{exc}
+Misalkan $S$ adalah sebuah himpunan dari seluruh subhimpunan dari $\ZZ$. Definisikan sebuah hubungan kesetaraan $\sim$ pada $S$ sebagai $T \sim U$ jika dan hanya jika baik $T\setminus U$ maupun $S \setminus T$ adalah berhingga. Tunjukkan $\sim$ adalah sebuah hubungan kesetaraan dan deskripsikan $[\{1, 2, 3\}]$ dan $ [\{..., -4, -2, 0, 2, 4, ...\}] $.
+\end{exc}
+
+\begin{exc}
+Pada bidang $\RR^2$, definisikan hubungan $\sim$ sebagai $(a,b) \sim (c,d)$ jika dan hanya jika $3a - b = 3c - d$. Tunjukkan bahwa $\sim$ adalah sebuah hubungan kesetaraan, dan deskripsikan $[(4,2)]$.
+\end{exc}
+
+\begin{exc}
+Misalkan $S$ adalah sebuah himpunan tak-kosong. Tunjukkan bahwa untuk setiap partisi dari $S$, terdapat sebuah hubungan kesetaraan pada $S$ yang memiliki himpunan yang ada pada partisi tersebut sebagai kelas kesetaraannya.
+\end{exc}
+
+\begin{exc}
+Temukan kelas kesetaraan pada $\NN$ yang memiliki dengan tepat dua kelas kesetaraan, salah satunya memiliki tepat tiga unsur.
+\end{exc}
+
+\begin{exc}
+Misalkan terdapat sebuah hubungan $\rho$ pada sebuah himpunan $S$, sedemikian sehingga $\rho$ adalah refleksif dan transitif. Definisikan $\sim$ pada $S$ sebagai $a \sim b$ jika dan hanya jika $a \rho b$ dan $b \rho a$. Tunjukkan bahwa $\sim$ adalah sebuah hubungan kesetaraan.
+\end{exc}
+
+
+\section{Fungsi}
+
+Mari kita telisik dua definisi fungsi yang setara. Secara formal, jika $S$ dan $T$ adalah himpunan, maka sebuah fungsi dari $S$ ke $T$ adalah sebuah hubungan $\rho$ dari $S$ ke $T$ sedemikian sehingga, untuk setiap $s \in S$, hanya ada tepat satu $t \in T$ dimana $s \rho t$. Pada praktiknya, tidak ada orang yang menganggap fungsi seperti demikian. Definisi yang biasanya dipakai adalah seperti ini.
+
+\begin{defn}
+Misalkan $S$ dan $T$ adalah sembarang himpunan. Maka sebuah \textbf{fungsi} $\alpha : S \rightarrow T$ adalah sebuah aturan yang memasangkan, untuk setiap $s\in S$, sebuah unsur $\alpha(s)$ dari $T$.
+\end{defn}
+
+Pembaca budiman yang sudah belajar kalkulus pastinya sudah terbiasa dengan fungsi dari $\RR$ ke $\RR$.
+
+\begin{exmp}
+Kita dapat mendefinisikan sebuah fungsi $\alpha : \RR \rightarrow \RR$ sebagai $\alpha(a) = 5a^3 - 4a^2 + 7a + 3$ untuk semua $a \in \RR$.
+\end{exmp}
+
+Tetapi tidak harus juga $\RR$ ke $\RR$.
+
+\begin{exmp}
+Kita dapat mendefinisikan fungsi $\alpha : \ZZ \rightarrow \QQ$ sebagai $\alpha(a) = (-2)^a$ untuk semua $a \in \ZZ$.
+\end{exmp}
+
+Malahan, himpunan yang dipakai tidak harus berupa himpunan bilangan.
+
+\begin{exmp}
+Misalkan $S$ adalah himpunan dari seluruh kata dalam bahasa Inggris dan $T$ adalah himpunan dari seluruh huruf dalam alfabet. Kita dapat mendefinisikan $\alpha : S \rightarrow T$ dengan menyatakan $\alpha(w)$ sebagai huruf pertama dalam kata $w$, untuk setiap $w \in S$.
+\end{exmp}
+
+Ada beberapa sifat yang dimiliki oleh beberapa fungsi yang patut untuk dicermati.
+
+\begin{defn}
+Sebuah fungsi $\alpha : S \rightarrow T$ disebut \textbf{satu-satu} (atau \textbf{injektif}) jika $\alpha(s_1) = \alpha(s_2)$ berarti $s_1 = s_2$, untuk setiap $s_1, s_2 \in S$.
+\end{defn}
+
+Dengan kata lain, fungsi satu-satu membawa satu unsur berbeda ke satu target yang berbeda satu sama lain.
+
+\begin{exmp}
+\label{exmp1.24}
+Definisikan fungsi $\alpha$ dan $\beta$ dari $\RR$ ke $\RR$ sebagai $\alpha(a) = a^2$ dan $\beta(a) = a^3$, untuk setiap $\alpha \in \RR$. Maka fungsi $\alpha$ tidak sati-satu, karena $\alpha(1) = \alpha(-1)$, tetapi $\beta$ adalah satu-satu, karena jika $a^3 = b^3$, maka jika mengambil akar kubus (akar pangkat tiga) dari dua sisinya, kita mendapatkan $a = b$, untuk setiap $a,b \in \RR$.
+\end{exmp}
+
+\begin{defn}
+Sebuah fungsi $\alpha : S \rightarrow T$ disebut \textbf{surjektif} jika, untuk setiap $t \in T$, terdapat paling tidak satu $s \in S$ sedemikian sehingga $\alpha(s) = t$
+\end{defn}
+
+\begin{exmp}
+\label{exmp1.25}
+Definisikan $\alpha$ dan $\beta$ seperti pada Contoh \ref{exmp1.24}. Maka $\alpha$ tidak surjektif, karena tidak ada $\alpha \in \RR$ sedemikian sehingga $\alpha(a) = -1$. Tetapi, untuk $b \in \RR$, maka $\beta(\sqrt[3]{b}) = b$; sehingga, $\beta$ adalah surjektif.
+\end{exmp}
+
+Janganlah menganggap sifat satu-satu dan surjektif selalu ada bersamaan.
+
+\begin{exmp}
+\label{exmp1.26}
+Definisikan $\alpha : \RR \rightarrow \RR$ sebagai $\alpha(a) = 2^a$. Maka $\alpha$ adalah satu-satu, karena jika $2^a = 2^b$, mengambil logaritma basis 2 dari kedua sisi, kita akan mendapatkan $a = b$. Di sisi lain, tidak terdapat $a \in \RR$ sedemikian sehingga $2^a = -1$, jadi $\alpha$ tidaklah surjektif.
+\end{exmp}
+
+Tapi cukup menggembirakan jika kita dapat menggabungkan kedua sifat tersebut.
+
+\begin{defn}
+Sebuah fungsi $\alpha : S \rightarrow T$ disebut \textbf{bijektif} jika ia satu-satu dan surjektif.
+\end{defn}
+
+Satu cara yang ekivalen untuk mengekspresikan sifat ini adalah bahwa untuk setiap $t \in T$, terdapat tepat setunggal $s \in S$ sedemikian sehingga $\alpha(s) = t$. Pastilah ada $s$ yang demikian, karena $\alpha$ surjektif, tetapi jika $\alpha(s_1) = \alpha(s_2) = t$ untuk suatu $s_1, s_2 \in S$, maka karena $\alpha$ adalah satu-satu, $s_1 = s_2$. Untuk alasan ini, sebuah fungsi bijektif disebut pula dengan \textbf{korespondensi satu-satu}.
+
+\begin{exmp}
+\label{exmp1.27}
+Menggabungkan Contoh \ref{exmp1.24} dan \ref{exmp1.25}, kita mendapatkan $\alpha : \RR \rightarrow \RR$ yang didefinisikan sebagai $\alpha(a) = a^3$ adalah bijektif.
+\end{exmp}
+
+Sekarang kita diskusikan bagaimana menggabungkan beberapa fungsi.
+
+\begin{defn}
+Andaikan $R, S$, dan $T$ adalah himpunan, dan misalkan $\alpha : R \rightarrow S$ dan $\beta : S \rightarrow T$ adalah fungsi. Maka \textbf{komposisi} keduanya, $\beta \circ \alpha$, atau cukup $\beta \alpha$, adalah fungsi dari $R$ ke $T$ yang diberikan oleh $(\beta \alpha)(r) = \beta(\alpha(r))$ untuk setiap $r \in R$.
+\end{defn}
+
+Perlu dicatat ketika kita menuliskan $\beta \alpha$, kita menerapkan $\alpha$ terlebih dahulu, lalu diikuti $\beta$. Urutannya penting! Perlu dicatat, bergantung dari himpunan yang terlibat, sangat mungkin menerapkan $\beta$ terlebih dahulu, lalu $\alpha$, menjadi tidak masuk akal. Meskipun terdefinisi dengan baik, hasilnya tidak berarti sama.
+
+\begin{exmp}
+\label{exmp1.28}
+Definisikan fungsi $\alpha$ dan $\beta$ dari $\RR$ ke $\RR$ sebagai $\alpha(a) = a^3 + 1$ dan $\beta(a) = a^2$, untuk $a\in \RR$. Maka $(\beta \alpha)(a) = \beta(a^3+1) = a^6 + 2 a^3 + 1$, dimana $(\alpha \beta)(a) = \alpha(a^2) = a^6 + 1$, untuk $a \in \RR$. Yaitu, $\beta \alpha$ dan $\alpha \beta$ adalah dua fungsi yang berbeda.
+\end{exmp}
+
+Kita dapat menuliskan beberapa sifat-sifat penting dari komposisi fungsi.
+
+\begin{thm}
+\label{thm1.2}
+Misalkan $\alpha : R \rightarrow S$, $\beta : S \rightarrow T$, dan $\gamma : T \rightarrow U$ adalah fungsi-fungsi. Maka
+\begin{enumerate}
+    \item \( (\gamma \beta) \alpha = \gamma (\beta \alpha) \);
+    \item jika $\alpha$ dan $\beta$ adalah satu-satu, maka begitupula $\beta \alpha$;
+    \item jika $\alpha$ dan $\beta$ adalah surjektif, maka begitupula $\beta \alpha$;
+    \item jika $\alpha$ dan $\beta$ adalah bijektif, maka begitupula $\beta \alpha$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+(1) Pilih sembarang \(r \in R$. Maka $((\gamma \beta) \alpha)(r) = (\gamma \beta)(\alpha(r)) = \gamma (\beta( \alpha(r))) \). Demikian pula, \( (\gamma(\beta \alpha))(r) = \gamma((\beta \alpha)(r)) = \gamma(\beta(\alpha(r))) \).
+
+(2) Misalkan $(\beta \alpha)(r_1) = (\beta \alpha)(r_2)$ untuk suatu $r_1, r_2 \in R$. Maka $\beta(\alpha(r_1)) = \beta(\alpha(r_2))$. Karena $\beta$ adalah satu-satu, maka $\alpha(r_1) = \alpha(r_2)$. Karena $\alpha$ adalah satu-satu, maka $r_1 = r_2$.
+
+(3) Pilih sembarang $t \in T$. Karena $\beta$ surjektif, maka terdapat $s \in S$ sedemikian sehingga $\beta(s) = t$. Tetapi $\alpha$ juga surjektif, maka terdapat $r \in R$ sedemikain sehingga $\alpha(r) = s$. Jadi, \( (\beta \alpha)(r) = \beta(\alpha(r)) = \beta(s) = t \).
+
+(4) Gabungkan (2) dan (3).
+\end{proof}
+
+% The following additional property of bijective functions can be useful.
+Tambahan sifat berikut dari fungsi bijektif bisa sangat bermanfaat.
+
+\begin{thm}
+\label{thm1.3}
+Misalkan $\alpha : S \rightarrow T$ adalah sebuah fungsi bijektif. Maka terdapat sebuah fungsi bijektif $\beta : T \rightarrow S$ sedemikian sehingga $(\beta \alpha)(s) = s$ untuk semua $s \in S$ dan $(\alpha \beta)(t) = t$ untuk semua $t \in T$.
+\end{thm}
+
+\begin{proof}
+Karena $\alpha$ adalah bijektif, maka untuk setiap $t \in T$, terdapat setunggal unik $s \in S$ sedemikian sehingga $\alpha(s) = t$. Definisikan $\beta : T \rightarrow S$ sebagai $ \beta(t) = s$. Menurut definisi, terdapat $ (\beta \alpha)(s) = \beta(\alpha(s)) = s $, untuk semua $s \in S$. Selain itu, jika $t \in T$, maka dengan memilih $s$ sedemikian sehingga $\alpha(s) = t$, kita akan mendapatkan $\beta(t) = s$, sehingga $ (\alpha \beta)(t) = \alpha(\beta(t)) = \alpha(s) = t $, seperti yang dicari. Sekarang perlu ditunjukkan bahwa $\beta$ adalah bijektif. Tetapi jika $\beta(t_1) = \beta(t_2)$, maka
+\[ t_1 = (\alpha \beta)(t_1) = \alpha(\beta(t_1)) = \alpha(\beta(t_2)) = (\alpha \beta)(t_2) = t_2, \]
+jadi $\beta$ adalah satu-satu. Lebih jauh, jika $s \in S$, maka $\beta(\alpha(s)) = (\beta \alpha)(s) = s$, sehingga $\beta$ adalah surjektif.
+\end{proof}
+
+\begin{exmp}
+Misalkan $\alpha : \RR \rightarrow \RR$ diberikan oleh $\alpha(a) = a^3$ untuk seluruh $a$. Contoh \ref{exmp1.27} menunjukkan bahwa $\alpha$ adalah bijektif. Dapat diperiksa dengan mudah jika kita memilih $\beta : \RR \rightarrow \RR$ sebagai $\beta(a) = \sqrt[3]{a}$ untuk seluruh $a$, maka $(\alpha \beta)(a) = (\beta \alpha)(a) = a$ untuk seluruh $a$.
+\end{exmp}
+
+Kita tutup bab ini dengan mendefinisikan dua macam fungsi khusus.
+
+\begin{defn}
+Sebuah \textbf{permutasi} dari sebuah himpunan $S$ adalah sebuah fungsi bijektif dari $S$ ke $S$.
+\end{defn}
+
+\begin{exmp}
+Pada Contoh \ref{exmp1.27}, fungsi $\alpha : \RR \rightarrow \RR$ diberikan oleh $\alpha(a) = a^3$ adalah permutasi dari $\RR$.
+\end{exmp}
+
+\begin{exmp}
+Misalkan $S = \{ 1, 2, 3, 4 \}$. Definisikan $\alpha : S \rightarrow S$ sebagai $\alpha(1) = 3, \alpha(2) = 2, \alpha(3) = 4$, dan $\alpha(4) = 1$. Maka $\alpha$ adalah sebuah permutasi dari $S$.
+\end{exmp}
+
+\begin{defn}
+Misalkan $S$ adalah sebuah himpunan. Maka \textbf{operasi biner} pada $S$ adalah sebuah fungsi dari $S \times S$ ke $S$.
+\end{defn}
+
+\begin{exmp}
+Kita dapat mendefinisikan operasi biner $*$ pada $\RR$ sebagai $a * b = 2a^b - 3b^4 + 5$, untuk seluruh $a,b \in \RR$. (Dalam notasi fungsi, kita bisa menuliskan $\alpha((a,b)) = 2a^b - 3b^4 + 5$, untuk seluruh $a,b \in \RR$.)
+\end{exmp}
+
+Perlu dicatat bahwa untuk mendapatkan sebuah operasi biner, kita harus tetap berada pada himpunan awal kita. Misalnya, kita tidak akan mendapatkan operasi biner pada $\NN$ jika kita coba mendefinisikan $a * b = \frac{a}{b}$, karena $1* 2 = \frac{1}{2} \notin \NN$.
+\hfill \break 
+
+
+\textbf{Latihan}
+
+\begin{exc}
+Definisikan $\alpha : \{ 1, 2, 3, 4 \} \rightarrow \{ 1, 2, 3, 4, 5, 6, 7 \}$ sebagai $\alpha(a) = 2a - 1$. Apakah fungsi ini satu-satu? Apakah ia surjektif?
+\end{exc}
+
+\begin{exc}
+Definisikan $\alpha : \RR \rightarrow \RR$ sebagai $\alpha(a) = \sqrt[3]{a+1} - 2$. Apakah fungsi ini satu-satu? Apakah ia surjektif?
+\end{exc}
+
+\begin{exc}
+Misalkan $S$ adalah himpunan bilangan riil dan $T$ adalah himpunan bilangan riil positif. Definisikan $\alpha : S \rightarrow T$ sebagai $\alpha(a) = 2^{3a-5}$. Tunjukkan bahwa $\alpha$ adalah sebuah bijeksi dan carilah $\beta : T \rightarrow S$ sedemikian sehingga $(\beta \alpha)(a) = a$ untuk seluruh $\alpha \in S$.
+\end{exc}
+
+\begin{exc}
+Definisikan $\alpha : \RR \rightarrow \RR$ sebagai
+\[ \alpha(a) = 
+  \begin{cases}
+    4a - 3, & a \leq 1 \\
+    a^2, & a > 1.
+  \end{cases}
+\]
+Tunjukkan bahwa $\alpha$ adalah bijektif dan carilah $\beta : \RR \rightarrow \RR$ sedemikian sehingga $(\beta \alpha)(a) = a$ untuk seluruh $\alpha \in S$.
+\end{exc}
+
+\begin{exc}
+Operasi mana sajakah dari daftar berikut yang merupakan operasi biner pada $\NN$?
+  \begin{enumerate}
+    \item $a * b = ab$
+    \item $a * b = a - b$
+    \item $a * b = 3$ untuk seluruh $a$ dan $b$
+  \end{enumerate}
+\end{exc}
+
+\begin{exc}
+Misalkan $S$ adalah himpunan berhingga, dan misalkan $\alpha : S \rightarrow S$ adalah fungsi satu-satu. Tunjukkan bahwa $\alpha$ adalah sebuah permutasi dari $S$. Bangunlah sebuah contoh salah (\textit{counterexample}) secara eksplisit untuk menunjukkan bahwa hal ini tidak benar jika $S$ adalah tak-berhingga.
+\end{exc}
+
+\begin{exc}
+Misalkan $\alpha : R \rightarrow S$ dan $\beta : S \rightarrow T$ adalah fungsi, dan misalkan $\beta \alpha$ adalah surjektif. Apakah $\alpha$ pasti surjektif juga? Bagaimana dengan $\beta$?
+\end{exc}
+
+\begin{exc}
+Misalkan $\alpha : R \rightarrow S$ dan $\beta : S \rightarrow T$ adalah fungsi, dan misalkan $\beta \alpha$ adalah satu-satu. Apakah $\alpha$ pasti satu-satu juga? Bagaimana dengan $\beta$?
+\end{exc}
+
+\begin{exc}
+Misalkan $S$ adalah himpunan dengan $m$ banyaknya unsur dan $T$ adalah himpunan dengan $n$ unsur, untuk bilangan bulat positif $m$ dan $n$.
+  \begin{enumerate}
+    \item Berapa banyak fungsi dari $S$ ke $T$?
+    \item Berapa banyak darinya yang satu-satu?
+  \end{enumerate}
+\end{exc}
+
+\begin{exc}
+Misalkan $S$ dan $T$ adalah himpunan dan $\alpha : S \rightarrow T$ adalah sebuah fungsi. Tunjukkan bahwa terdapat sebuah himpunan $R$ dan fungsi $\beta : S \rightarrow R$ dan $\gamma : R \rightarrow T$ sedemikian sehingga $\beta$ adalah surjektif, dan $\gamma$ adalah satu-satu serta $\alpha = \gamma \beta$.
+\end{exc}
